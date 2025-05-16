@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h1>Shorten Your URL</h1>
+
+    <form action="{{ url_for('index') }}" method="POST"> {# Form submits back to the index route #}
+        <div>
+            <label for="long_url">Enter Long URL:</label><br>
+            <input type="text" id="long_url" name="long_url" size="50" required> {# Input for the long URL #}
+        </div>
+        <br>
+        <div>
+            <button type="submit">Shorten</button> {# Submit button #}
+        </div>
+    </form>
+
+    {# This section will conditionally display the short URL after submission #}
+    {% if short_url %} {# Check if the short_url variable exists and is not empty #}
+        <h2>Shortened URL:</h2>
+        <p><a href="{{ short_url }}" target="_blank">{{ short_url }}</a></p> {# Display and link the short URL #}
+    {% endif %}
+
+</body>
+</html>
